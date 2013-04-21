@@ -48,9 +48,8 @@ build-dir:
 
 
 install:
-	-install -d $(PIQI_PREFIX)/bin
-	install piqi-tools/piqi $(PIQI_PREFIX)/bin
-	install piqic/piqic $(PIQI_PREFIX)/bin
+	-install -d $(DESTDIR)$(PIQI_PREFIX)/bin
+	install piqi-tools/piqi $(DESTDIR)$(PIQI_PREFIX)/bin
 
 
 ocaml:
@@ -61,6 +60,8 @@ ocaml-install: ocaml-uninstall
 	test -d $(PIQI_OCAML_DESTDIR) || mkdir -p $(PIQI_OCAML_DESTDIR)
 	ocamlfind install piqi `ls $(PIQI_BUILD)/lib/ocaml/piqi/*`
 	$(MAKE) -C deps install
+	-install -d $(DESTDIR)$(PIQI_PREFIX)/bin
+	install piqic/piqic $(DESTDIR)$(PIQI_PREFIX)/bin
 
 
 ocaml-uninstall:
