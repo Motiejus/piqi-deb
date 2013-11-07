@@ -7,3 +7,6 @@ make
 
 . ./setenv.sh
 make -C tests
+
+make -sC doc html test
+
